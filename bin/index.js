@@ -16,34 +16,32 @@ const url = `https://seaeagle.zingworks.com/view/dev-kf4/job/dev/job/kf4/job/${
 }/build`;
 
 const payload = {
-  json: {
-    parameter: [
-      { name: "deploy_to", value: "pegasi" },
-      { name: "cluster", value: "pegasi-gcp-gke-cluster-p001" },
-      { name: "repository", value: answers.github },
-      { name: "branch", value: answers.branch },
-      { name: "zone", value: "us-central1-b" },
-      { name: "namespace", value: answers.environment },
-      { name: "project", value: "kf-dev-workload-p001" },
-      { name: "secret_env", value: capitalizeFirstLetter(answers.environment) },
-      { name: "agent", value: "" },
-      { name: "static_bucket", value: "pegasi-cs-static-p001" },
-      { name: "run_test_cases", value: answers.runTestCases },
-      { name: "notify_failure", value: answers.notifyFailure },
-      { name: "clear_cache", value: answers.clearCache },
-      { name: "run_analysis", value: answers.runAnalysis },
-      { name: "run_translation", value: answers.runTranslation },
-      { name: "run_asset_versioning", value: answers.runAssetVersioning },
-      { name: "run_pwa", value: answers.runPwa },
-      { name: "run_web", value: answers.runWeb },
-      { name: "image_registry", value: "us-docker.pkg.dev" },
-      { name: "__AWS_SM_REGION_NAME", value: "us-west-2" },
-      { name: "kind", value: "all" },
-      { name: "service", value: "" },
-    ],
-    statusCode: "303",
-    redirectTo: ".",
-  },
+  parameter: [
+    { name: "deploy_to", value: "pegasi" },
+    { name: "cluster", value: "pegasi-gcp-gke-cluster-p001" },
+    { name: "repository", value: answers.github },
+    { name: "branch", value: answers.branch },
+    { name: "zone", value: "us-central1-b" },
+    { name: "namespace", value: answers.environment },
+    { name: "project", value: "kf-dev-workload-p001" },
+    { name: "secret_env", value: capitalizeFirstLetter(answers.environment) },
+    { name: "agent", value: "" },
+    { name: "static_bucket", value: "pegasi-cs-static-p001" },
+    { name: "run_test_cases", value: answers.runTestCases },
+    { name: "notify_failure", value: answers.notifyFailure },
+    { name: "clear_cache", value: answers.clearCache },
+    { name: "run_analysis", value: answers.runAnalysis },
+    { name: "run_translation", value: answers.runTranslation },
+    { name: "run_asset_versioning", value: answers.runAssetVersioning },
+    { name: "run_pwa", value: answers.runPwa },
+    { name: "run_web", value: answers.runWeb },
+    { name: "image_registry", value: "us-docker.pkg.dev" },
+    { name: "__AWS_SM_REGION_NAME", value: "us-west-2" },
+    { name: "kind", value: "all" },
+    { name: "service", value: "" },
+  ],
+  statusCode: "303",
+  redirectTo: ".",
 };
 
 try {
@@ -80,7 +78,7 @@ try {
 
   const { status } = response;
 
-  if (status === 201) {
+  if (status === 304) {
     console.log(chalk.green("Deploying!!"));
   }
 } catch (e) {
